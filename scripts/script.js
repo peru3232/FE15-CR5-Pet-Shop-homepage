@@ -26,7 +26,7 @@ class Animal {
             vacBtnManipulate = `danger">Vaccine <i class="fad fa-empty-set`;
         }
         return `
-        <div class="card col-lg-3 col-md-5 col-sm-10 col-11 p-0 mx-4 mb-auto mt-3 border-0 card-shadow">
+        <div class="card col-lg-3 col-md-5 col-sm-10 col-11 p-0 mx-4 mb-auto mt-3 border-0 card-shadow animate__animated animate__fadeIn">
             <img src="${this.img}" class="card-img-top d-none d-sm-block img-task" alt="${this.name}">
             <h4 class="card-title py-1 my-0 bg-black text-light">${this.name}</h4>
             <div class="card-body text-start pb-0">
@@ -57,7 +57,7 @@ class Dog extends Animal {
         </div>`;
     }
 }
-// --------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
 class Cat extends Animal {
     constructor(name, gender, age, size, img, vaccine, breed, furColor, breedInfo, arr) {
         super(name, gender, age, size, img, vaccine, arr);
@@ -74,7 +74,8 @@ class Cat extends Animal {
         </div>`;
     }
 }
-// --------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
+// sorting cards from animals by age (possible direction is up and down with symbol change)
 function sortByAge(direction) {
     const sortBtn = document.getElementById("sort");
     switch (direction) {
@@ -88,7 +89,8 @@ function sortByAge(direction) {
     }
     updateMainpage();
 }
-// --------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
+// update content from webpage
 function updateMainpage() {
     const output = document.getElementById("task-container");
     output.innerHTML = '';
@@ -96,7 +98,23 @@ function updateMainpage() {
         output.innerHTML += animal.display();
     });
 }
-//============================= D A T A  a n d  S E T T I N G S ==================================
+// ----------------------------------------------------------------------------------------------
+// to animate the footer with mouse usage
+const footer = document.getElementsByTagName("footer")[0];
+footer.addEventListener("mouseenter", function () { footerSlide(true); });
+footer.addEventListener("mouseleave", function () { footerSlide(false); });
+function footerSlide(over) {
+    const toggle = document.getElementsByClassName("toggle")[0];
+    if (over) {
+        toggle.classList.remove("animate__slideOutDown");
+        toggle.classList.add("animate__slideInUp");
+    }
+    else {
+        toggle.classList.remove("animate__slideInUp");
+        toggle.classList.add("animate__slideOutDown");
+    }
+}
+//======================================= D A T A ===============================================
 const arrAnimals = [];
 new Animal("Bacon", "female", 1, "small", "../images/Bacon.jpg", true, arrAnimals);
 new Dog("Bellolino", "male", 5, "large", "../images/belloloino.webp", false, "mix", true, arrAnimals);
@@ -105,4 +123,5 @@ new Cat("Mietzi", "female", 7, "small", "../images/Mietzi.jpg", false, "American
 new Animal("Ready", "male", 4, "small", "../images/Ready.jpg", false, arrAnimals);
 new Dog("Gaff-gaff", "male", 3, "medium", "../images/Gaff-gaff.webp", true, "Shepper", true, arrAnimals);
 //===============================================================================================
+// generate start content
 updateMainpage();

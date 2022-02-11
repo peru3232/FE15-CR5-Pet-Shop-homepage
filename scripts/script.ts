@@ -24,7 +24,7 @@ class Animal {
             vacBtnManipulate = `danger">Vaccine <i class="fad fa-empty-set`;
         }
         return `
-        <div class="card col-lg-3 col-md-5 col-sm-10 col-11 p-0 mx-4 mb-auto mt-3 border-0 card-shadow">
+        <div class="card col-lg-3 col-md-5 col-sm-10 col-11 p-0 mx-4 mb-auto mt-3 border-0 card-shadow animate__animated animate__fadeIn">
             <img src="${this.img}" class="card-img-top d-none d-sm-block img-task" alt="${this.name}">
             <h4 class="card-title py-1 my-0 bg-black text-light">${this.name}</h4>
             <div class="card-body text-start pb-0">
@@ -66,7 +66,7 @@ class Dog extends Animal {
         </div>`
     }  
 }
-// --------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
 
 class Cat extends Animal {
 
@@ -94,8 +94,8 @@ class Cat extends Animal {
         </div>`
     }
 }
-// --------------------------------------------------------------------------------------------------
-
+// ----------------------------------------------------------------------------------------------
+// sorting cards from animals by age (possible direction is up and down with symbol change)
 function sortByAge(direction:string) {
     const sortBtn = document.getElementById("sort") as HTMLElement;
     switch(direction) {
@@ -109,8 +109,8 @@ function sortByAge(direction:string) {
     }
     updateMainpage();
 }
-// --------------------------------------------------------------------------------------------------
-
+// ----------------------------------------------------------------------------------------------
+// update content from webpage
 function updateMainpage() {
     const output = document.getElementById("task-container") as HTMLElement;
     output.innerHTML = '';
@@ -119,7 +119,24 @@ function updateMainpage() {
     });
 }
 
-//============================= D A T A  a n d  S E T T I N G S ==================================
+// ----------------------------------------------------------------------------------------------
+// to animate the footer with mouse usage
+const footer = document.getElementsByTagName("footer")[0] as HTMLElement;
+footer.addEventListener("mouseenter", function() {footerSlide(true)});
+footer.addEventListener("mouseleave", function() {footerSlide(false)})
+
+function footerSlide(over:boolean) {
+    const toggle = document.getElementsByClassName("toggle")[0] as HTMLElement;
+    if (over){
+        toggle.classList.remove("animate__slideOutDown");
+        toggle.classList.add("animate__slideInUp");
+    } else {
+        toggle.classList.remove("animate__slideInUp");
+        toggle.classList.add("animate__slideOutDown");
+    }
+}
+
+//======================================= D A T A ===============================================
 const arrAnimals = [] as Array<Animal>;
 
 new Animal("Bacon", "female", 1, "small", "../images/Bacon.jpg", true, arrAnimals);
@@ -131,4 +148,5 @@ new Dog("Gaff-gaff", "male", 3, "medium", "../images/Gaff-gaff.webp", true, "She
 
 //===============================================================================================
 
+// generate start content
 updateMainpage();
