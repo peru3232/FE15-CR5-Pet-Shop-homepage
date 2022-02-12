@@ -28,19 +28,16 @@ class Animal {
         return `
         <div class="card col-lg-3 col-md-5 col-sm-10 col-11 p-0 mx-4 mb-auto mt-3 border-0 card-shadow animate__animated animate__fadeIn">
             <img src="${this.img}" class="card-img-top d-none d-sm-block img-task" alt="${this.name}">
-            <h4 class="card-title py-1 my-0 bg-black text-light">${this.name}</h4>
-            <div class="card-body text-start pb-0">
-                <p>Gender : ${this.gender}<p>
+            <h4 class="card-title text-center py-1 bg-black text-light">${this.name}</h4>
+            <div class="card-body text-start py-0">
+                <p>Gender : ${this.gender}</p>
                 <p>Age : ${this.age}</p>
                 <p>Size : ${this.size}</p>
             </div>
             <h3 class="text-center mx-1 p-2 text-light rounded-pill bg-${vacBtnManipulate}"></i></h3>`;
     }
-    displayEnd() {
-        return `
-            </div>
-        </div>`;
-    }
+    displayEnd() { return `</div>`; }
+    ;
 }
 // --------------------------------------------------------------------------------------------------
 class Dog extends Animal {
@@ -99,10 +96,13 @@ function updateMainpage() {
     });
 }
 // ----------------------------------------------------------------------------------------------
-// to animate the footer with mouse usage
+// to animate the footer with mouse usage 
 const footer = document.getElementsByTagName("footer")[0];
+const body = document.getElementsByTagName("body")[0];
 footer.addEventListener("mouseenter", function () { footerSlide(true); });
 footer.addEventListener("mouseleave", function () { footerSlide(false); });
+//slide out only with mouse in window
+body.addEventListener("mouseenter", function () { footerSlide(false); });
 function footerSlide(over) {
     const toggle = document.getElementsByClassName("toggle")[0];
     if (over) {
@@ -116,12 +116,12 @@ function footerSlide(over) {
 }
 //======================================= D A T A ===============================================
 const arrAnimals = [];
-new Animal("Bacon", "female", 1, "small", "../images/Bacon.jpg", true, arrAnimals);
-new Dog("Bellolino", "male", 5, "large", "../images/belloloino.webp", false, "mix", true, arrAnimals);
+new Animal("Uschi", "female", 1, "small", "../images/Bacon.jpg", true, arrAnimals);
+new Dog("Gaffgaff", "male", 5, "large", "../images/belloloino.webp", false, "mix", true, arrAnimals);
 new Cat("Puschl", "female", 13, "xxlarge", "../images/Puschl.jpg", true, "Lion", "Blond", "www.lions.com", arrAnimals);
-new Cat("Mietzi", "female", 7, "small", "../images/Mietzi.jpg", false, "American Shorthair", "Tabby", "www.sh-cats.com", arrAnimals);
-new Animal("Ready", "male", 4, "small", "../images/Ready.jpg", false, arrAnimals);
-new Dog("Gaff-gaff", "male", 3, "medium", "../images/Gaff-gaff.webp", true, "Shepper", true, arrAnimals);
+new Cat("Schnurrli", "female", 7, "small", "../images/Mietzi.jpg", false, "American Shorthair", "Tabby", "www.shcats.com", arrAnimals);
+new Animal("Hermann", "male", 4, "small", "../images/Ready.jpg", false, arrAnimals);
+new Dog("Bellolino", "male", 3, "medium", "../images/Gaff-gaff.webp", true, "Shepper", true, arrAnimals);
 //===============================================================================================
 // generate start content
 updateMainpage();
