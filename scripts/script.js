@@ -116,12 +116,12 @@ function footerSlide(over) {
 }
 //======================================= D A T A ===============================================
 const arrAnimals = [];
-new Animal("Uschi", "female", 1, "small", "../images/Bacon.jpg", true, arrAnimals);
-new Dog("Gaffgaff", "male", 5, "large", "../images/belloloino.webp", false, "mix", true, arrAnimals);
-new Cat("Puschl", "female", 13, "xxlarge", "../images/Puschl.jpg", true, "Lion", "Blond", "www.lions.com", arrAnimals);
-new Cat("Schnurrli", "female", 7, "small", "../images/Mietzi.jpg", false, "American Shorthair", "Tabby", "www.shcats.com", arrAnimals);
-new Animal("Hermann", "male", 4, "small", "../images/Ready.jpg", false, arrAnimals);
-new Dog("Bellolino", "male", 3, "medium", "../images/Gaff-gaff.webp", true, "Shepper", true, arrAnimals);
+new Animal("Uschi", "female", 1, "small", "images/Bacon.jpg", true, arrAnimals);
+new Dog("Gaffgaff", "male", 5, "large", "images/belloloino.webp", false, "mix", true, arrAnimals);
+new Cat("Puschl", "female", 13, "xxlarge", "images/Puschl.jpg", true, "Lion", "Blond", "www.lions.com", arrAnimals);
+new Cat("Schnurrli", "female", 7, "small", "images/Mietzi.jpg", false, "American Shorthair", "Tabby", "www.shcats.com", arrAnimals);
+new Animal("Hermann", "male", 4, "small", "images/Ready.jpg", false, arrAnimals);
+new Dog("Bellolino", "male", 3, "medium", "images/Gaff-gaff.webp", true, "Shepper", true, arrAnimals);
 //===============================================================================================
 // generate start content
 updateMainpage();
